@@ -1,0 +1,29 @@
+{
+    "bindings": [
+      {
+        "authLevel": "function",
+        "type": "httpTrigger",
+        "direction": "in",
+        "name": "req",
+        "route": "users/{userId}/totalgarbages",
+        "methods": [
+          "get"
+        ]
+      },
+      {
+        "type": "http",
+        "direction": "out",
+        "name": "res"
+      },
+      {
+        "type": "documentDB",
+        "name": "cosmosDb",
+        "databaseName": "crowdhackathon-db",
+        "collectionName": "Garbages",
+        "connection": "crowdhackathon-cosmos-db_DOCUMENTDB",
+        "direction": "in",
+        "sqlQuery": "SELECT SUM(c.glass) as glass, SUM(c.paper) as paper, SUM(c.metal) as metal, SUM(c.plastic) as plastic FROM c WHERE c.userId = {userId}"
+      }
+    ],
+    "disabled": false
+  }

@@ -122,41 +122,6 @@ try:
 	def motors_power_off():
 		vMotor.PowerOff()
 		hMotor.PowerOff()
-	
-	def motion_detected(channel):
-		global IMAGE_COUNTER
-		print('Motion Detected')
-		
-		# Disable motion detection
-		GPIO.remove_event_detect(config.PIR_PIN)
-		
-		time.sleep(1)
-		image_filename = '/home/pi/Desktop/image' + str(IMAGE_COUNTER) + '.jpg'
-		camera.CaptureImage(image_filename)
-		time.sleep(0.5)
-		result = classifier.classify(image_filename)
-		print(result)
-		
-		IMAGE_COUNTER = IMAGE_COUNTER + 1
-		
-		time.sleep(0.5)
-		throw_metal()
-		time.sleep(0.5)
-		motors_power_off()
-		
-		#distance = ranger.Measure()
-		#print(distance)
-		
-		data = pn532.ReadCard(config.PN532_CARD_KEY, 4)
-		#data = "Hello World"
-		print(data)
-		
-		print('"{0}"'.format(data))
-		
-		message = config.IOTHUB_MESSAGE_TEMPLATE.format("crowdhackathon-raspberry", str(data))
-		print(message)
-		client.SendGarbages(message)
-		time.sleep(0.5)
 		
 	def WaitForAuthentication():
 		global garbages
@@ -165,11 +130,11 @@ try:
 		print('{} {} {}'.format(count, userId, garbages))
 		while userId is None or (garbages['glass'] + garbages['metal'] + garbages['plastic'] + garbages['other'] == 0):
 			count = count + 1
-			print('{} {} {}'.format(count, userId, garbages))
+			#print('{} {} {}'.format(count, userId, garbages))
 			if count > 3:
 				return None
 			userId = pn532.ReadCard(config.PN532_CARD_KEY, 4)
-		message = config.IOTHUB_MESSAGE_TEMPLATE.format(config.DEVICE_ID, str(userId), garbages['glass'], garbages['metal'], garbages['plastic'], garbages['other'])
+		message = config.IOTHUB_MESSAGE_TEMPLATE.format(config.DEVICE_ID, str(userId)[:7], garbages['glass'], garbages['metal'], garbages['plastic'], garbages['other'])
 		print(message)
 		client.SendGarbages(message)
 		garbages = {

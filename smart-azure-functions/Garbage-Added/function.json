@@ -1,0 +1,23 @@
+{
+    "bindings": [
+      {
+        "type": "eventHubTrigger",
+        "name": "IoTHubMessages",
+        "direction": "in",
+        "path": "samples-workitems",
+        "connection": "crowdhackathon-iot-hub_events_IOTHUB",
+        "cardinality": "many",
+        "consumerGroup": "$Default"
+      },
+      {
+        "type": "documentDB",
+        "name": "cosmosDb",
+        "databaseName": "crowdhackathon-db",
+        "collectionName": "Garbages",
+        "createIfNotExists": true,
+        "connection": "crowdhackathon-cosmos-db_DOCUMENTDB",
+        "direction": "out"
+      }
+    ],
+    "disabled": false
+  }

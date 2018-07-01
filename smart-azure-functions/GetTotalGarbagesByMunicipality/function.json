@@ -1,0 +1,29 @@
+{
+    "bindings": [
+      {
+        "authLevel": "function",
+        "type": "httpTrigger",
+        "direction": "in",
+        "name": "req",
+        "route": "municipality/{municipality}/totalgarbages",
+        "methods": [
+          "get"
+        ]
+      },
+      {
+        "type": "http",
+        "direction": "out",
+        "name": "res"
+      },
+      {
+        "type": "documentDB",
+        "name": "cosmosDb",
+        "databaseName": "crowdhackathon-db",
+        "collectionName": "Devices",
+        "connection": "crowdhackathon-cosmos-db_DOCUMENTDB",
+        "direction": "in",
+        "sqlQuery": "SELECT c.deviceId FROM c WHERE c.owner = {municipality}"
+      }
+    ],
+    "disabled": false
+}
