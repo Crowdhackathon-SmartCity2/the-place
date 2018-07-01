@@ -1,0 +1,6 @@
+<template>
+  <h1>Profile</h1>
+  <p>You have been logged in as ${name} from ${municipality}. Your role is ${role}.</p>
+  <h2>Claims</h2>
+  <p repeat.for="claim of claims">${claim.type} - ${claim.value}</p>
+</template>

@@ -1,0 +1,12 @@
+<template>
+  <require from="../resources/value-converters/capitalize"></require>
+  <div id="map-ui">
+    <label repeat.for="interest of interests">
+      <input type="checkbox" model.bind="interest" checked.bind="interest.value" change.delegate="interestChanged()">
+      ${interest.type | capitalize}
+    </label>
+    <button class="btn-collect-full" click.delegate="collectBins(true)">Collect Full</button>
+    <button class="btn-collect-all" click.delegate="collectBins(false)">Collect All</button>
+  </div>
+  <div id="map"></div>
+</template>

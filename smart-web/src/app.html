@@ -1,0 +1,34 @@
+<template>
+  <require from="./reset.css"></require>
+  <require from="./styles.css"></require>
+  <nav class="main-nav">
+      <ul>
+        <template repeat.for="nav of router.navigation">
+          <!-- <p>${nav.title} nav:${nav.config.nav} auth:${nav.config.auth} role:${nav.settings.role}</p>
+          <p>${profile.role}</p> -->
+          <li if.bind="nav.config.nav && (!nav.config.auth || (nav.config.auth && nav.settings.role === state.profile.role))" class="${nav.isActive ? 'active' : ''}"> 
+            <a class="main-nav-link" href.bind="nav.href">${nav.title}</a>
+          </li>
+        </template>
+      </ul>
+      <ul if.bind="!authenticated">
+        <li if.bind="!authenticated">
+          <button class="main-nav-link" click.delegate="authenticate()">Login</button>
+        </li>
+      </ul>
+      <ul if.bind="authenticated">
+          <li>
+            <a class="main-nav-link" href="/profile">Profile</a>
+          </li>
+          <li>
+            <button class="main-nav-link" click.delegate="logout()">Logout</button>
+          </li>
+      </ul>
+  </nav>
+  <main class="main-view">
+    <router-view></router-view>
+  </main>
+  <footer class="main-footer">
+    Copyright &copy; The Place
+  </footer>
+</template>

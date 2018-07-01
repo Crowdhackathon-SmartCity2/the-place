@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+/* Typography */
+html {font-size: 1em;}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #333;
+  background-color: white;
+}
+
+p {margin-bottom: 1.3em;}
+
+h1, h2, h3, h4 {
+  margin: 1.414em 0 0.5em;
+  font-weight: inherit;
+  line-height: 1.2;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 1.296em;
+}
+
+h2 {font-size: 1.215em;}
+
+h3 {font-size: 1.138em;}
+
+h4 {font-size: 1.067em;}
+
+small, .font_small {font-size: 0.937em;}
+
+/* Grid System */
+
+body {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 40px auto 40px;
+  min-height: 100vh;
+}
+
+.main-nav, .main-view, .main-footer {
+  grid-column: span 12;
+}
+
+/* Navigation */
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-nav ul li {
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.main-nav-link {
+  color: #000;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: auto;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+a.main-nav-link {
+  text-decoration: none;
+}
+
+button.main-nav-link {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Main View
+.main-view {
+  padding: 20px;
+} */
+
+/* Footer */
+.main-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Map */
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+#map-ui {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  z-index: 1000;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#map-ui button {
+  border: none;
+  margin: 1em;
+  min-width: 8em;
+  min-height: 3em;
+}
+
+#map-ui button.btn-collect-full {
+  background-color: #1b1a37;
+  color: #FFFFFF;
+}
+
+#map-ui button.btn-collect-full:hover {
+  background-color: #FFFFFF;
+  color: #1b1a37;
+  border: 1px #1b1a37 solid;
+}
+
+#map-ui button.btn-collect-all {
+  background-color: #e62552;
+  color: #FFFFFF;
+}
+
+#map-ui button.btn-collect-all:hover {
+  background-color: #FFFFFF;
+  color: #e62552;
+  border: 1px #e62552 solid;
+}
+
+/* Dashboard */
+.dashboard-section {
+  width: 100%;
+  height: 600px;
+  padding: 0 20px;
+}
+
+#dashboard-total-section {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-rows: auto 1fr 1fr;
+  grid-template-areas:
+    "total-heading total-heading total-heading"
+    "total-glass total-paper total-chart" 
+    "total-metal total-plastic total-chart"
+}
+
+.dashboard-col {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#total-recycling-chart-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-col h3 {
+  font-size: 1.4em;
+}
+
+.dashboard-stat {
+  flex-grow: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-stat p {
+  font-size: 2.2em;
+}
+
+#total-recycling-glass, #total-recycling-paper, #total-recycling-metal, #total-recycling-plastic {
+  color: #FFFFFF;
+}
+
+#total-recycling-heading {
+  grid-area: total-heading;
+}
+
+#total-recycling-chart {
+  grid-area: total-chart;
+}
+
+#total-recycling-glass {
+  background-color: rgb(194,53,49);
+  grid-area: total-glass;
+}
+
+#total-recycling-paper {
+  background-color: rgb(47,69,84);
+  grid-area: total-paper;
+}
+#total-recycling-metal {
+  background-color: rgb(97,160,168);
+  grid-area: total-metal;
+}
+#total-recycling-plastic {
+  background-color: rgb(212,130,101);
+  grid-area: total-plastic;
+}
+
+#dashboard-yearly-section, #dashboard-users-section {
+  /* display: grid;
+  grid-gap: 10px;
+  grid-template-rows: 1fr 5fr;
+  grid-template-areas:
+    "yearly-heading"
+    "yearly-chart"  */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#yearly-recycling-heading, #users-recycling-heading {
+  grid-area: yearly-heading;
+}
+
+#yearly-recycling-chart, #users-recycling-chart {
+  grid-area: yearly-chart;
+}
+
+#yearly-recycling-chart-div, #users-recycling-chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1200px) {
+  
+}
+
+@media screen and (max-width: 720px) {
+
+}
+
+@media screen and (max-width: 480px) {
+
+}
